@@ -1,6 +1,12 @@
 <!--
 Market: SF
+Adapted By: Zeb Girouard
+Market: DEN
 -->
+
+<!-- 10:30 5 minutes -->
+
+<!--Hook: -->
 
 ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
 
@@ -23,6 +29,8 @@ Market: SF
 *Before this workshop, developers should already be able to:*
 
 - **Create** a basic rails app using `rails new` 
+
+<!-- 10:35 10 minutes -->
 
 ## Intro - Routing in Rails 
 
@@ -84,7 +92,9 @@ end
 
 All the ruby code inside the block above will be related to defining routes.
 
-## Demo - Creating routes in a Rails app (15 mins)
+<!-- 10:45 15 minutes -->
+
+## Demo - Creating routes in a Rails app
 
 First, let's create a new rails app:
 
@@ -136,8 +146,9 @@ $ rails s
 
 Visit `http://localhost:3000/about_us` in the browser. You should see the text "hello from Rails! This is all about us..." rendered in the browser; thus, we know that the route `/about_us` rendered the method `about_us` in the controller.  These two elements, the route definition in ```routes.rb``` and the method in the controller, are linked.
 
+<!-- 11:00 20 minutes -->
 
-## The Resources Shortcut - Codealong (20 mins)
+## The Resources Shortcut - Codealong
 
 Let's create another rails app:
 
@@ -154,7 +165,7 @@ rails g scaffold post title content
 
 This command will create all the MVC structure for the `post` resource as well as our basic routes!
 
-Check out the line 
+Check out the following line in your routes file:
 
 ```
 resources :posts
@@ -176,22 +187,24 @@ This line hides some powerful rails magic - it's actually mapping the seven REST
 
 YES! These seven routes have been created just by adding `resources :posts` in the file `routes.rb`
 
-If we had to create these routes individually in ```routes.rb```, it would looks like this:
+If we had to create these routes individually in ```routes.rb```, it would look like this:
 
 ```ruby
-get    "/posts"          , to: "posts#index"
-post   "/posts"          , to: "posts#create"
-get    "/posts/new"      , to: "posts#new"
-get    "/posts/:id/edit" , to: "posts#edit"
-get    "/posts/:id"      , to: "posts#show"
-put    "/posts/:id"      , to: "posts#update"
-delete "/posts/:id"      , to: "posts#destroy"
+get    "/posts"          , to: "posts#index"  , as: => :posts
+post   "/posts"          , to: "posts#create" , as: => :create_post
+get    "/posts/new"      , to: "posts#new"    , as: => :new_post
+get    "/posts/:id/edit" , to: "posts#edit"   , as: => :edit_post
+get    "/posts/:id"      , to: "posts#show"   , as: => :post
+put    "/posts/:id"      , to: "posts#update" , as: => :update_post
+delete "/posts/:id"      , to: "posts#destroy", as: => :destroy_post
 ```
+
+<!--11:20 15 minutes -->
 
 ## Independent Practice (15 mins)
 
 
-Re-use the application "blog" we've just created and add three routes to it manually:
+Re-use the `blog_routes_app` application we've just created and add three routes to it manually:
 
 * faqs
 * terms_and_conditions
@@ -199,8 +212,9 @@ Re-use the application "blog" we've just created and add three routes to it manu
 
 These three routes will be accessed via a GET request. When the user is accessing a route, the browser should display the name of the route, therefore, you'll need to create the related method in a controller (Hint: call your controller "StaticPages" and [read up](http://stackoverflow.com/questions/4479233/static-pages-in-ruby-on-rails) on static pages in Rails).
 
-Then, create a "categories" controller using scaffold, remove the line added in routes.rb by the generator (`resources : categories`) and re-create the seven restful routes matching the 7 methods in the categories controller manually.
+Once these routes work, create a "categories" controller using scaffold, remove the line added in routes.rb by the generator (`resources : categories`) and re-create the seven restful routes matching the 7 methods in the categories controller manually.
 
+<!--11:35 5 minutes -->
 
 ##Conclusion
 
