@@ -190,13 +190,13 @@ YES! These seven routes have been created just by adding `resources :posts` in t
 If we had to create these routes individually in ```routes.rb```, it would look like this:
 
 ```ruby
-get    "/posts"          , to: "posts#index"  , as: => :posts
-post   "/posts"          , to: "posts#create" , as: => :create_post
-get    "/posts/new"      , to: "posts#new"    , as: => :new_post
-get    "/posts/:id/edit" , to: "posts#edit"   , as: => :edit_post
-get    "/posts/:id"      , to: "posts#show"   , as: => :post
-put    "/posts/:id"      , to: "posts#update" , as: => :update_post
-delete "/posts/:id"      , to: "posts#destroy", as: => :destroy_post
+get    "/posts"          , to: "posts#index"  , :as => :posts
+post   "/posts"          , to: "posts#create" , :as => :create_post
+get    "/posts/new"      , to: "posts#new"    , :as => :new_post
+get    "/posts/:id/edit" , to: "posts#edit"   , :as => :edit_post
+get    "/posts/:id"      , to: "posts#show"   , :as => :post
+put    "/posts/:id"      , to: "posts#update" , :as => :update_post
+delete "/posts/:id"      , to: "posts#destroy", :as => :destroy_post
 ```
 
 <!--11:20 15 minutes -->
@@ -210,9 +210,11 @@ Re-use the `blog_routes_app` application we've just created and add three routes
 * terms_and_conditions
 * team
 
-These three routes will be accessed via a GET request. When the user is accessing a route, the browser should display the name of the route, therefore, you'll need to create the related method in a controller (Hint: call your controller "StaticPages" and [read up](http://stackoverflow.com/questions/4479233/static-pages-in-ruby-on-rails) on static pages in Rails).
+These three routes will be accessed via a GET request. When the user is accessing a route, the browser should display the name of the route, and some explanatory text. Therefore, you'll need to create the related method in a controller (Hint: call your controller "StaticPages" and [read up](http://stackoverflow.com/questions/4479233/static-pages-in-ruby-on-rails) on static pages in Rails).
 
 Once these routes work, create a "categories" controller using scaffold, remove the line added in routes.rb by the generator (`resources : categories`) and re-create the seven restful routes matching the 7 methods in the categories controller manually.
+
+>**Note**: You will also need to add an 8th `patch` route to ensure all of your CRUD operations work as expected.
 
 <!--11:35 5 minutes -->
 
