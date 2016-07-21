@@ -15,21 +15,22 @@ Market: SF
 <!-- specific/measurable goal for students to achieve -->
 *After this workshop, developers will be able to:*
 
-- Better understand Rails routes and controllers, how to set them up and how they relate to eachother
+- **Set up** Rails routes and controllers
+- **Understand** how routes and controllers relate to each other
 
 ### Where should we be now?
 <!-- call out the skills that are prerequisites -->
 *Before this workshop, developers should already be able to:*
 
-- Be able to create a basic rails app using `rails new` 
+- **Create** a basic rails app using `rails new` 
 
 ## Intro - Routing in Rails 
 
 In this lesson, we are going to talk about "routing" with a focus around the MVC pattern.
 
 As a reminder, MVC is a pattern defining a web app in three parts:
-* The (M)odels, holding all the business logic
-* The (V)iews, rendering the database content as a readable format
+* The (M)odels, holding all the _business logic_
+* The (V)iews, rendering the database content in a readable format
 * The (C)ontrollers, linking views and models
 
 
@@ -85,7 +86,7 @@ All the ruby code inside the block above will be related to defining routes.
 
 ## Demo - Creating routes in a Rails app (15 mins)
 
-First, Let's create a new rails app:
+First, let's create a new rails app:
 
 ```bash
 rails new routes_and_controllers
@@ -112,7 +113,8 @@ Add the method about_us in the controller home:
   end
 ```
 
-At the moment, this action can not be accessed via an http route, we need to add a route handler.
+Well, that's great, but how do we actually get this method to run?
+At the moment, this action can not be accessed via an http route, so we need to add a route handler.
 
 
 In `config/routes.rb` delete all the comments and replace with:
@@ -123,10 +125,10 @@ In `config/routes.rb` delete all the comments and replace with:
 
 - `get` is the http verb to use for this request
 - `/about_us` is the `uri` to call to access this resource
-- ` to: 'home#about_us'` is a key defining which method and controller will be used
+- ` to: 'home#about_us'` is a key defining which _controller_ and _method_ will be used
 
 
-Let's have a look at when we spin up a local server:
+Let's have a look at the result by spinning up a local server:
 
 ```
 $ rails s
@@ -150,7 +152,7 @@ To explain the concept of resourceful/restful routes, we will scaffold the Post 
 rails g scaffold post title content
 ```
 
-This command will create all the MVC structure for the resource blog as well as our basic routes!
+This command will create all the MVC structure for the `post` resource as well as our basic routes!
 
 Check out the line 
 
@@ -158,7 +160,7 @@ Check out the line
 resources :posts
 ```
 
-This line hides some powerful rails magic - it's actually mapping the seven restful methods from the controller `posts` to the related http routes with the correct HTTP verbs and uris:
+This line hides some powerful rails magic - it's actually mapping the seven RESTful methods from the controller `posts` to the related HTTP routes with the correct HTTP verbs and URIs:
 
 
 
@@ -204,9 +206,9 @@ Then, create a "categories" controller using scaffold, remove the line added in 
 
 #### Questions
 
-* What are the four HTTP verbs that we've used ?
-* What are the seven methods for a Restful resource ?
-* Is routing part of MVC ?
-* Where is the routing logic in Sinatra ?
+* What are the four HTTP verbs that we've used?
+* What are the seven methods for a Restful resource?
+* How does a route relate to MVC?
+* Where is the routing logic in Sinatra? How about Rails?
 
-During this introduction to routing in Rails, we have just reviewed the basics of handling HTTP requests in a web app. This is a concept that we will practice everyday from now so don't be worried - you'll have a lot of occasions to practice.
+During this introduction to routing in Rails, we have just reviewed the basics of handling HTTP requests in a web app. This is a concept that we will practice everyday from now on, so don't be worried - you'll have a lot of chances to practice.
