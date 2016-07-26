@@ -6,7 +6,7 @@ Market: DEN
 
 <!-- 10:30 5 minutes -->
 
-<!--Hook: -->
+<!--Hook: So in the survey we had a few responses that the most confusing part of the stack for a lot of devs is the hand-off from front-end to back-end.  That is what this class is all about.  This is how Rails handles routing.  You will see all of our routes, and then the immediate handoff to our controllers.-->
 
 ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
 
@@ -60,6 +60,7 @@ When a user makes a request to the browser, the web-application needs to know wh
 
 Let's compare with code that we have previously written.
 
+<!-- Where did we put all our routes in Sinatra? -->
 
 In Sinatra we defined the routes within our controller action:
 
@@ -124,7 +125,7 @@ Add the method about_us in the controller home:
 ```
 
 Well, that's great, but how do we actually get this method to run?
-At the moment, this action can not be accessed via an http route, so we need to add a route handler.
+At the moment, this action can not be accessed via an HTTP route, so we need to add a route handler.
 
 
 In `config/routes.rb` delete all the comments and replace with:
@@ -173,7 +174,7 @@ resources :posts
 
 This line hides some powerful rails magic - it's actually mapping the seven RESTful methods from the controller `posts` to the related HTTP routes with the correct HTTP verbs and URIs:
 
-
+<!--Whip-around reading all these routes -->
 
 | REST Route type | HTTP Verb | URI | ruby method name|
 |-----------------|-----------|-----|-----------------|
@@ -199,9 +200,11 @@ put    "/posts/:id"      , to: "posts#update" , :as => :update_post
 delete "/posts/:id"      , to: "posts#destroy", :as => :destroy_post
 ```
 
+Let's try that, and make sure all our routes still work.  Once that's done, quickly un-do your change so we can sit back and enjoy the Rails magic of `resources`.
+
 <!--11:20 15 minutes -->
 
-## Independent Practice (15 mins)
+## Independent Practice
 
 
 Re-use the `blog_routes_app` application we've just created and add three routes to it manually:
